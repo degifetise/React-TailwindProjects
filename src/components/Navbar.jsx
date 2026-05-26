@@ -32,10 +32,30 @@ function Navbar() {
             </a>
 
             <a
+              href="#chatAI"
+              className="text-gray-300 hover:text-white hover:cursor-pointer text-sm lg:text-base"
+            >
+              ChatWithAI
+            </a>
+
+            <a
+              href="#how-it-works"
+              className="text-gray-300 hover:text-white hover:cursor-pointer text-sm lg:text-base"
+            >
+              HowItWorks
+            </a>
+
+            <a
               href="#pricing"
               className="text-gray-300 hover:text-white hover:cursor-pointer text-sm lg:text-base"
             >
               Pricing
+            </a>
+            <a
+              href="#faq"
+              className="text-gray-300 hover:text-white hover:cursor-pointer text-sm lg:text-base"
+            >
+          FAQ
             </a>
 
             <a

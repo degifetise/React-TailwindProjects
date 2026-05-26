@@ -30,7 +30,7 @@ function Pricing() {
     <section id="pricing" className="py-6 bg-slate-950">
       <h2 className="text-4xl font-bold text-center mb-8">
         Feature{" "}
-        <span className=" bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
           Pricing{" "}
         </span>{" "}
         plan
