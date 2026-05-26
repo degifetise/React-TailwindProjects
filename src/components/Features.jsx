@@ -1,4 +1,4 @@
-import React from "react";
+import "react";
 import { Bot, FileUp, HelpCircle, FileText } from "lucide-react";
 function Features() {
   const features = [
