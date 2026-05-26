@@ -57,7 +57,7 @@ function Hero() {
               </h1>
 
               {/* description of websites */}
-              <p className="text-md sm:text-base lg:text-lg text-gray-400 max-w-2xl mx-auto mg:mx-0 mb-6 sm:mb-8 animate-in slide-in-from-bottom duration-700  delay-200 leading-relaxed">
+              <p className="text-md sm:text-base lg:text-lg text-gray-600 max-w-2xl mx-auto mg:mx-0 mb-6 sm:mb-8 animate-in slide-in-from-bottom duration-700  delay-200 leading-relaxed">
                 Our platform empowers developers to write cleaner code, solve
                 bugs faster, and accelerate project delivery. With AI‑powered
                 guidance, you’ll gain practical solutions, real‑time error
