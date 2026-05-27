@@ -35,6 +35,12 @@
   .delay-900 {
     animation-duration: 1100;
   }
+  .animate-scalePulse {
+    animation: scalePulse 2s infinite ease-in-out;
+  }
+  .animate-colorCycle {
+    animation: colorCycle 3s infinite linear;
+  }
 }
 
 @keyframes slidesInFromBottom {
@@ -57,4 +63,16 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes scalePulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+@keyframes colorCycle {
+  0% { color: #3b82f6; }   /* blue-500 */
+  33% { color: #ef4444; }  /* red-500 */
+  66% { color: #22c55e; }  /* green-500 */
+  100% { color: #3b82f6; } /* back to blue */
 }
