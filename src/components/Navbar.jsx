@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Menu, X } from "lucide-react";
 function Navbar() {
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 shadow-lg transition-all duration-300 bg-slate-950/20 backdrop-blur-sm">
+    <nav className="fixed top-0 w-full z-50 shadow-lg transition-all duration-300 bg-slate-950/20 backdrop-blur-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14 sm:16 md:20">
           <div className="flex items-center space-x-1 group cursor-pointer">
@@ -23,7 +23,7 @@ function Navbar() {
 
           {/* nav links */}
 
-          <div className="hidden md:flex items-center space-x-6 sm:space-x-8 md:space-x-10">
+          <div className="hidden  md:flex items-center space-x-6 sm:space-x-8 md:space-x-10">
             <a
               href="#features"
               className="text-gray-300 hover:text-white hover:cursor-pointer text-sm lg:text-base"
@@ -75,7 +75,7 @@ function Navbar() {
       </div>
 
       {mobileMenuIsOpen && (
-        <div className="md:hidden bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 animate-in slide-in-from-top duration-300">
+        <div className="md:hidden  bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 animate-in slide-in-from-top duration-300">
           <div className="flex flex-col items-center p-4 sm:py-6 space-y-3 sm:space-y-4">
             <a
               href="#features"

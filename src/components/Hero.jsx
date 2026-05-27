@@ -1,12 +1,34 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, ChevronDown, Play, Sparkle } from "lucide-react";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { codeExamples, floatingCards } from "../data/CodeExamples";
-import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { ArrowRight, Play, Sparkle } from "lucide-react";
 function Hero() {
+  const lists = [
+    {
+      id: 1,
+      name: "Start with React basics",
+    },
+    {
+      id: 2,
+      name: "Upload notes for AI summaries",
+    },
+    {
+      id: 3,
+      name: "Build projects with feedback",
+    },
+  ];
+
+
+
+  // Example questions array
+  const quizQuestions = [
+
+    {
+      type: "chooseTwo",
+      question: "Which react hooks are commonly used for state management?",
+      options: ["useState", "useRef", "useEffect", "useMemo"],
+    },
+  ];
+
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [activeTab, setActiveTab] = useState("App.jsx");
-  const currentFloatingCards = floatingCards[activeTab];
   useEffect(() => {
     function handleMouthMove(e) {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -18,8 +40,9 @@ function Hero() {
       window.removeEventListener("mousemove", handleMouthMove);
     };
   }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-16 sm:pt-20 px-4 sm:px-16 lg:px-8 overflow-hidden">
+    <section className="relative mt-20 min-h-screen flex items-center justify-center pt-16 sm:pt-20 px-4 sm:px-16 lg:px-8 overflow-hidden">
       <div
         className="absolute inset-0 opacity-30"
         style={{
@@ -37,7 +60,7 @@ function Hero() {
 
           <div>
             <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-sm mb-2 sm:mb-6 animate-in slide-in-from-bottom duration-700">
-              <Sparkle className="w-4 h-4 text-blue-400 " />
+              <Sparkle className="w-4 h-4 text-blue-400 animate-scalePulse animate-colorCycle " />
               <span className="text-xs sm:text-sm text-blue-300">
                 Future AI Powered Learning PLatform
               </span>
@@ -82,94 +105,75 @@ function Hero() {
             </div>
           </div>
 
-          <div className="relative w-full order-2">
-            <div className="relative bg-white/5 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-2xl border border-white/10">
-              <div className="bg-gradient-to-br from-gray-900/20 to-gray-800/20  backdrop-blur-sm rounded-lg overflow-hidden lg:h-[450] sm:h-[350] h-[280px]  border border-white/5 ">
-                {/* IDE HEADER */}
-                <div className="flex items-center justify-between  px-3 sm:px-4 py-2 sm:py-3 bg-white/5 backdrop-blur-sm border-white/10">
-                  <div className="flex sm:space-x-2 items-center">
-                    <div className="flex space-x-1 sm:space-x-2 items-center">
-                      <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500" />
-                      <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-500" />
-                      <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500" />
-                    </div>
-
-                    <span className="text-xs sm:text-sm text-gray-300">
-                      ProgramLearn
-                    </span>
-                  </div>
-
-                  <div className="flex items-center space-x-1">
-                    <span className="bg-blue-800/80 p-1 rounded">AI</span>
-                    <ChevronDown className="w-3 h-3 rounded-full sm:w-4 sm:h-4" />
-                  </div>
-                </div>
-
-                <div className="p-3 sm:p-4 relative h-full">
-                  <div className="flex space-x-1 mb-3 sm:mb-4 overflow-x-auto">
-                    <button
-                      onClick={() => setActiveTab("App.jsx")}
-                      className={`px-3 py-2 backdrop-blur-sm text-xs sm:text-sm rounded-t-lg border ${activeTab === "App.jsx" ? "bg-blue-500/30 text-white border-blue-400/20" : "bg-white/5 text-gray-300 border-white/10 hover:bg-white/10"}  transition-all duration-200 whitespace-nowrap`}
-                    >
-                      App.jsx
-                    </button>
-                    <button
-                      onClick={() => setActiveTab("Hero.jsx")}
-                      className={`px-3 py-2 backdrop-blur-sm text-xs sm:text-sm rounded-t-lg border ${activeTab === "Hero.jsx" ? "bg-blue-500/30 text-white border-blue-400/20" : "bg-white/5 text-gray-300 border-white/10 hover:bg-white/10"}  transition-all duration-200 whitespace-nowrap`}
-                    >
-                      Hero.jsx
-                    </button>
-                    <button
-                      onClick={() => setActiveTab("Navbar.jsx")}
-                      className={`px-3 py-2 backdrop-blur-sm text-xs sm:text-sm rounded-t-lg border ${activeTab === "Navbar.jsx" ? "bg-blue-500/30 text-white border-blue-400/20" : "bg-white/5 text-gray-300 border-white/10 hover:bg-white/10"}  transition-all duration-200 whitespace-nowrap`}
-                    >
-                      Navbar.jsx
-                    </button>
-                  </div>
-                  {/* Code content we will install libraries like react code syntax highlighter*/}
-                  <div className="relative overflow-hidden flex-grow">
-                    <SyntaxHighlighter
-                      language="javascript"
-                      style={nightOwl}
-                      customStyle={{
-                        margin: "0",
-                        borderRadius: "8px",
-                        lineHeight: ".8",
-                        fontSize: "11px",
-                        height: "100%",
-                        border: "1px solid #3c3c3c",
-                      }}
-                    >
-                      {codeExamples[activeTab]}
-                    </SyntaxHighlighter>
-                  </div>
-                </div>
+          {/* AI Summary Card */}
+          {/* AI Quiz Card */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex flex-col  gap-6">
+            <div className="bg-white/5 backdrop-blur-xl rounded-xl p-4 shadow-2xl border border-white/10">
+              <h3 className="text-pink-500 text-sm font-semibold mb-2 text-center">
+                AI Roadmap → Learning Path
+              </h3>
+              <div className="bg-gradient-to-br from-gray-900/30 to-gray-800/30 backdrop-blur-md rounded-lg p-4 border border-white/10 shadow-lg">
+                <ol className="list-disc list-inside text-sm text-gray-400 space-y-1">
+                  {lists.map((list) => (
+                    <li>{list.name}</li>
+                  ))}
+                </ol>
               </div>
+              <span className="text-xs bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent mt-3 border-t-2 p-2 text-center block">
+                AI Guides Your Journey
+              </span>
+            </div>
+            {/* AI Code Explainer Card */}
+            <div className="relative bg-white/5 backdrop-filter-xl rounded-xl p-4 shadow-xl border border-white/10">
+              <h3 className="text-purple-400 text-sm font-semibold mb-2 text-center">
+                AI Code → Explanation
+              </h3>
+              <div className="bg-gradient-to-br from-gray-900/30 to-gray-800/30 backdrop-blur-md  rounded-lg p-4 border-white/10 shadow-lg">
+                <p className="text-gray-400 text-sm">
+                  <code className="text-purple-400">useState</code> initializes
+                  state variables and updates them dynamically.
+                </p>
+                <p className="text-gray-400 text-xs mt-2">
+                  Example:{" "}
+                  <code className="text-pink-500">
+                    const [count, setCount] = useState(0){" "}
+                  </code>
+                </p>
+              </div>
+              <span className="text-xs bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent mt-3 border-t-2 p-2 text-center block">
+                AI Explains Code Instantly
+              </span>
+            </div>
+            {/* AI Quiz Card */}
 
-              {/* Floating cards */}
+            <div className="relative bg-white/5 backdrop-blur-xl rounded-xl p-4 shadow-2xl border border-white/10">
+              <h3 className="text-green-400 text-sm font-semibold mb-2 text-center">
+                AI Quiz → Practice Questions
+              </h3>
               <div
-                className={`hidden lg:block absolute bottom-4 right-4 translate-x-6 translate-y-6 transform w-72 ${currentFloatingCards.bgColor} backdrop-blur-xl rounded-lg border border-white/20 shadow-2xl`}
+                className="bg-gradient-to-br from-gray-900/30 to-gray-800/30 
+                  backdrop-blur-md rounded-lg p-4 border border-white/10 shadow-lg"
               >
-                <div className="flex items-center flex-col space-x-2 mb-2">
-                  <div className="flex flex-col items-center sm:space-x-1 lg:space-x-2">
-                    <div
-                      className={`w-6 h-6 ${currentFloatingCards.iconColor} flex items-center justify-center text-sm font-bold`}
-                    >
-                      {currentFloatingCards.icon}
-                    </div>
-                    <span
-                      className={`text-sm font-medium ${currentFloatingCards.textColor} `}
-                    >
-                      {currentFloatingCards.title}
-                    </span>
+                {quizQuestions.map((q, i) => (
+                  <div key={i} className="mb-4">
+                    <p className="text-slate-400 text-sm mb-2"> {q.question}</p>
+
+                    <ul className="space-y-2 text-sm">
+                      {q.options.map((opt, j) => (
+                        <li
+                          key={j}
+                          className="bg-white/10 hover:bg-green-500/30 p-2 rounded cursor-pointer"
+                        >
+                          {opt}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <div
-                    className={`text-sm font-medium ${currentFloatingCards.contentColor}`}
-                  >
-                    {currentFloatingCards.content}
-                  </div>
-                </div>
+                ))}
               </div>
+              <span className="text-xs bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent mt-3 border-t-2 p-2 text-center block">
+                Powered by AI Learning
+              </span>
             </div>
           </div>
         </div>
