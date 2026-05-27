@@ -12,10 +12,13 @@ function App() {
       <Navbar />
       <Hero />
       <Features />
-      <FileUploadAI />
       <HowItWorks />
       <Pricing />
       <FAQ />
+
+      <div>
+        <FileUploadAI />
+      </div>
     </div>
   );
 }

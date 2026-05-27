@@ -31,12 +31,6 @@ function Navbar() {
               Features
             </a>
 
-            <a
-              href="#chatAI"
-              className="text-gray-300 hover:text-white hover:cursor-pointer text-sm lg:text-base"
-            >
-              ChatWithAI
-            </a>
 
             <a
               href="#how-it-works"
@@ -89,13 +83,6 @@ function Navbar() {
               className="block text-gray-300 hover:text-white hover:cursor-pointer text-sm lg:text-base"
             >
               Features
-            </a>
-            <a
-              href="#chatAI"
-              onClick={() => setMobileMenuIsOpen(false)}
-              className="text-gray-300 hover:text-white hover:cursor-pointer text-sm lg:text-base"
-            >
-              ChatWithAI
             </a>
             <a
               href="#how-it-works"
