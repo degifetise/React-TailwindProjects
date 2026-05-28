@@ -35,7 +35,7 @@ function Features() {
       id="features"
       className="py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"
     >
-      <h1 className="text-5xl mb-8 text-center bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent block sm:mb-10">
+      <h1 className="text-[clamp(1.75rem,4vw,2rem)] mb-8 text-center bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent block sm:mb-10">
         Powerful Features to Boost Your Learning
       </h1>
       <div className="grid md:grid-cols-2 gap-8 px-6 md:px-20">

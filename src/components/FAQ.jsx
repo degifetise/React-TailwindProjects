@@ -22,7 +22,7 @@ function FAQ() {
   const [openIndex, setIsOpenIndex] = useState(null);
   return (
     <section id="faq" className="py-16 bg-slate-950">
-      <h2 className="text-4xl font-bold text-center mb-10">
+      <h2 className="text-[clamp(1.75rem,4vw,2rem)] font-bold text-center mb-10">
         Frequently{" "}
         <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
           Asked Questions

@@ -28,7 +28,7 @@ function Pricing() {
 
   return (
     <section id="pricing" className="py-6 bg-slate-950">
-      <h2 className="text-4xl font-bold text-center mb-8">
+      <h2 className="text-[clamp(1.75rem,4vw,2rem)] font-semibold  sm:mb-6 animate-in slide-in-from-bottom duration-900 leading-tight italic tracking-wide text-center mb-4">
         Feature{" "}
         <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
           Pricing{" "}
