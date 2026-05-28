@@ -16,13 +16,14 @@ function Features() {
       desc: "Upload your study materials — PDFs, Word docs, or PowerPoint slides — and let AI instantly summarize chapters, highlight key points, and generate practice questions. Perfect for condensing lecture notes into actionable insights.",
     },
     {
+      id: 3,
       icon: <FileText className="text-orange-500 w-8 h-8 mx-auto" />,
       title: "Copy-Paste Text",
       desc: "No files? No problem. Paste any text directly into the platform and watch AI transform it into concise summaries, flashcards, or quizzes. Ideal for quick study sessions or refining your own notes.",
     },
 
     {
-      id: 3,
+      id: 4,
       icon: <HelpCircle className="text-purple-500 w-8 h-8 mx-auto" />,
       title: "Quiz Generator",
       desc: "Turn your notes into interactive learning. AI automatically creates multiple-choice questions, short answers, and practice tests to help you retain knowledge and prepare confidently for exams.",
@@ -30,7 +31,10 @@ function Features() {
   ];
 
   return (
-    <section id="features" className="py-16 bg-slate-950">
+    <section
+      id="features"
+      className="py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"
+    >
       <h1 className="text-5xl mb-8 text-center bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent block sm:mb-10">
         Powerful Features to Boost Your Learning
       </h1>
@@ -38,7 +42,8 @@ function Features() {
         {features.map((item) => (
           <div
             key={item.id}
-            className="bg-slate-900 backdrop-blur-lg shadow-lg rounded-lg p-6 text-center hover:scale-105"
+            className="group bg-slate-900/70 backdrop-blur-xl shadow-xl rounded-2xl p-8 text-center 
+                       hover:scale-105 hover:shadow-2xl transition-transform duration-300 ease-out"
           >
             {item.icon}
             <div>
