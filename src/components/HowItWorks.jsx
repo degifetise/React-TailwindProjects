@@ -20,7 +20,9 @@ function HowItWorks() {
   ];
   return (
     <section id="how-it-works" className="py-16 bg-slate-950">
-      <h2 className="text-4xl font-bold text-center mb-10">How It works</h2>
+      <h2 className="text-[clamp(1.75rem,4vw,2rem)] font-semibold  sm:mb-6 animate-in slide-in-from-bottom duration-900 leading-tight italic tracking-wide text-center mb-4">
+        How It works
+      </h2>
 
       <div className="grid md:grid-cols-3 gap-8 px-6 md:px-20">
         {steps.map((step, index) => (
