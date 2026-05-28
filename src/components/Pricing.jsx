@@ -39,7 +39,7 @@ function Pricing() {
         {plans.map((plan, i) => (
           <div
             key={i}
-            className="bg-slate-900 backdrop-blur-lg shadow-lg rounded-lg p-6 text-center hover:scale-105"
+            className=" bg-gradient-to-br from-gray-900/30 to-gray-800/30 backdrop-blur-md shadow-lg rounded-lg p-6 text-center hover:scale-105 hover:shadow-2xl transition-transform duration-300 ease-out"
           >
             <h3 className="text-2xl font-semibold">{plan.name}</h3>
             <p className="text-3xl font-bold mt-2 text-slate-400">
@@ -49,7 +49,7 @@ function Pricing() {
             <ul className="mt-4 space-y-2 text-gray-600">
               {plan.features.map((f, k) => (
                 <li key={k} className="flex items-center justify-center gap-2">
-                  <CheckCircle className="text-blue-500 w-5 h-5"/> {f}
+                  <CheckCircle className="text-blue-500 w-5 h-5" /> {f}
                 </li>
               ))}
             </ul>

@@ -26,7 +26,7 @@ function HowItWorks() {
         {steps.map((step, index) => (
           <div
             key={index}
-            className="bg-slate-900 shadow-lg rounded-lg p-6 text-center"
+            className="bg-gradient-to-br from-gray-900/30 to-gray-800/30 backdrop-blur-md shadow-lg rounded-lg p-6 text-center hover:scale-105 hover:shadow-2xl transition-transform duration-300 ease-out"
           >
             {step.icon}
             <h3 className="text-xl font-semibold mt-4">{step.title}</h3>
