@@ -88,12 +88,12 @@ function Hero() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 lg:gap-4 mb-8 sm:mb-12 animate-in slide-in-from-bottom duration-700 delay-900">
-                <button className="group hover:scale-105 w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-b from-slate-600 to-violet-400 rounded-lg font-semibold text-sm sm:text-base transition-all duration-700 hover:scale-102 flex items-center justify-center space-x-2">
+                <button className="group hover:scale-105 w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-400 via-cyan-400 rounded-lg font-semibold text-sm sm:text-base transition-all duration-700 hover:scale-102 flex items-center justify-center space-x-2">
                   <span>Start Free</span>
                   <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </button>
                 <button className="group hover:scale-105 w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/5 backdrop-blur-sm border border-white/5 rounded-lg font-semibold text-sm sm:text-base transition-all duration-700 hover:bg-white/10 flex items-center justify-center space-x-2">
-                  <div className="p-2 bg-white/10 rounded-full group-hover:bg-white/20 duration-300 transition-colors">
+                  <div className="p-1 bg-gradient-to-tr from-blue-600 via-cyan-200 to-slate-700 rounded-full group-hover:bg-white/20 duration-300 transition-colors">
                     <Play className="group-hover:translate-x-1 transition-transform fill-white" />
                   </div>
                   <span>Watch Demo</span>

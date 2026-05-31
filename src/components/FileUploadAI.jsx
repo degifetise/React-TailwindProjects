@@ -36,6 +36,7 @@ export default function ChatWithAI() {
 
       let index = 0;
       const words = fullText.split(" ");
+
       const interval = setInterval(() => {
         setMessages((prev) => {
           const lastMsg = prev[prev.length - 1];
@@ -68,7 +69,6 @@ export default function ChatWithAI() {
 
   return (
     <div className="fixed min-h-screen bg-slate-950">
-      {/* Floating button at bottom-right */}
       {!showChat && (
         <button
           onClick={() => setShowChat(true)}
@@ -78,7 +78,6 @@ export default function ChatWithAI() {
         </button>
       )}
 
-      {/* Sidebar chat panel */}
       <div
         className={`fixed bottom-0 top-20 right-0 w-full sm:w-[480px] bg-slate-800 shadow-lg transition-transform duration-500 ease-in-out ${
           showChat ? "translate-x-0" : "translate-x-full"
@@ -86,7 +85,6 @@ export default function ChatWithAI() {
       >
         {showChat && (
           <section className="flex flex-col h-full relative p-6">
-            {/* Close button */}
             <button
               onClick={() => setShowChat(false)}
               className="absolute top-3 right-3 text-gray-300 hover:text-white transition"
@@ -94,12 +92,10 @@ export default function ChatWithAI() {
               <X className="w-6 h-6" />
             </button>
 
-            {/* Header */}
-            <h2 className="text-xl font-bold text-white mb-4">
-              Chat With <span className="text-cyan-400">AI</span>
+            <h2 className="text-xl font-bold text-white mb-4 text-center">
+              I'm here <span className="text-slate-700">to assist you.</span>
             </h2>
 
-            {/* Chat window */}
             <div className="flex-1 overflow-y-auto border rounded-lg p-4 bg-slate-900 mb-4">
               {messages.map((msg, i) => (
                 <div
@@ -113,6 +109,7 @@ export default function ChatWithAI() {
                   {msg.content}
                 </div>
               ))}
+
               {loading && (
                 <div className="mb-3 p-3 rounded-lg max-w-[80%] bg-gray-200 text-gray-600 mr-auto animate-pulse">
                   Thinking...
@@ -120,7 +117,6 @@ export default function ChatWithAI() {
               )}
             </div>
 
-            {/* Input area */}
             <div className="flex flex-col gap-3">
               <textarea
                 value={text}
