@@ -6,6 +6,7 @@ import Pricing from "./components/Pricing";
 import FileUploadAI from "./components/FileUploadAI";
 import HowItWorks from "./components/HowItWorks";
 import FAQ from "./components/FAQ";
+import Testimonials from "./components/Testimonials";
 function App() {
   return (
     <div className="min-h-screen bg-slate-950 text-white overflow-hidden">
@@ -15,7 +16,7 @@ function App() {
       <HowItWorks />
       <Pricing />
       <FAQ />
-
+      <Testimonials />
       <div>
         <FileUploadAI />
       </div>

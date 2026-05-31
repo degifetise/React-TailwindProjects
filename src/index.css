@@ -4,6 +4,12 @@
 
 /* utilities class */
 
+/* swiper utilities */
+
+@import "swiper/css";
+@import "swiper/css/pagination";
+@import "swiper/css/navigation";
+
 @layer utilities {
   .animate-in {
     animation-fill-mode: both;
@@ -66,13 +72,38 @@
 }
 
 @keyframes scalePulse {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.5); }
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
 }
 
 @keyframes colorCycle {
-  0% { color: #3b82f6; }   /* blue-500 */
-  33% { color: #ef4444; }  /* red-500 */
-  66% { color: #22c55e; }  /* green-500 */
-  100% { color: #3b82f6; } /* back to blue */
+  0% {
+    color: #3b82f6;
+  } 
+  33% {
+    color: #ef4444;
+  } 
+  66% {
+    color: #22c55e;
+  } 
+  100% {
+    color: #3b82f6;
+  } 
+}
+
+.swiper-pagination-progressbar {
+  background: rgba(255, 255, 255, 0.2) !important; 
+  height: 3px !important;
+  border-radius: 9999px !important;
+}
+
+.swiper-pagination-progressbar-fill {
+  background: linear-gradient(to right, #3b82f6, #9333ea, #ccbbaa) !important;
 }
