@@ -1,6 +1,8 @@
-import  { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Menu, Moon, Sun, X } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 function Navbar() {
+  const { darkMode, ToggleTheme } = useTheme();
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
 
   return (
@@ -31,7 +33,6 @@ function Navbar() {
               Features
             </a>
 
-
             <a
               href="#how-it-works"
               className="text-gray-300 hover:text-white hover:cursor-pointer text-sm lg:text-base"
@@ -58,6 +59,7 @@ function Navbar() {
             >
               Testimonials
             </a>
+            <div onClick={ToggleTheme}>{darkMode ? <Sun /> : <Moon />}</div>
           </div>
           {/* for responsiveness */}
 

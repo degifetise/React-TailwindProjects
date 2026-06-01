@@ -50,7 +50,7 @@ function Features() {
               <h3 className="text-xl font-semibold mt-4 sm:mt-6">
                 {item.title}
               </h3>
-              <p className="text-gray-600 mt-2">{item.desc}</p>
+              <p className="text-gray-600 mt-2text-slate-300">{item.desc}</p>
             </div>
           </div>
         ))}
