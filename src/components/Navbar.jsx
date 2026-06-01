@@ -22,10 +22,8 @@ function Navbar() {
               <span className="text-blue-400">Learn</span>
             </span>
           </div>
-
           {/* nav links */}
-
-          <div className="hidden  md:flex items-center space-x-6 sm:space-x-8 md:space-x-10">
+          <div className="hidden md:flex items-center space-x-6 sm:space-x-8 md:space-x-10">
             <a
               href="#features"
               className="text-gray-300 hover:text-white hover:cursor-pointer text-sm lg:text-base"
@@ -59,10 +57,11 @@ function Navbar() {
             >
               Testimonials
             </a>
-            <div onClick={ToggleTheme}>{darkMode ? <Sun /> : <Moon />}</div>
-          </div>
+            <button onClick={ToggleTheme}>
+              {darkMode ? <Sun /> : <Moon />}
+            </button>
+          </div>{" "}
           {/* for responsiveness */}
-
           <button
             className="md:hidden p-2 text-gray-300 hover:text-white"
             onClick={() => setMobileMenuIsOpen((prev) => !prev)}
@@ -114,6 +113,9 @@ function Navbar() {
             >
               Testimonials
             </a>
+            <button onClick={ToggleTheme}>
+              {darkMode ? <Sun /> : <Moon />}
+            </button>
           </div>
         </div>
       )}

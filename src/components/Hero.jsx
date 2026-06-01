@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Play, Sparkle } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 function Hero() {
+  const { darkMode } = useTheme();
   const lists = [
     {
       id: 1,
@@ -39,7 +41,7 @@ function Hero() {
   }, []);
 
   return (
-    <section className="relative mt-20 min-h-screen flex items-center justify-center pt-16 sm:pt-20 px-4 sm:px-16 lg:px-8 overflow-hidden">
+    <section className="relative bg-gray-100 text-slate-900 dark:bg-gray-950 dark:text-slate-300 mt-20 min-h-screen flex items-center justify-center pt-16 sm:pt-20 px-4 sm:px-16 lg:px-8 overflow-hidden">
       <div
         className="absolute inset-0 opacity-30"
         style={{
