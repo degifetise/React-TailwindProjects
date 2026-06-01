@@ -32,7 +32,7 @@ function HowItWorks() {
           >
             {step.icon}
             <h3 className="text-xl font-semibold mt-4">{step.title}</h3>
-            <p className="text-gray-700 mt-2">{step.desc}</p>
+            <p className="text-gray-700 mt-2 text-slate-300">{step.desc}</p>
           </div>
         ))}
       </div>
