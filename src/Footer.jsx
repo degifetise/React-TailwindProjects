@@ -66,7 +66,7 @@ function Footer() {
           <h3 className="text-md font-semibold mb-3">Stay Connected</h3>
           <div className="flex space-x-4 mb-4">
             <a
-              href="https://linkedin.com/in/degife-tise-a42878351"
+              href="#"
               target="_blank"
               rel="noopener"
               className="hover:text-blue-500"
@@ -75,7 +75,7 @@ function Footer() {
             </a>
 
             <a
-              href="https://linkedin.com/in/degife-tise-a42878351"
+              href="#"
               target="_blank"
               rel="noopener"
               className="hover:text-blue-500"
@@ -84,12 +84,28 @@ function Footer() {
             </a>
 
             <a
-              href="https://linkedin.com/in/degife-tise-a42878351"
+              href="#"
               target="_blank"
               rel="noopener"
               className="hover:text-blue-500"
             >
               <FaFacebook className="w-6 h-6" />
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener"
+              className="hover:text-blue-500"
+            >
+              <FaYoutube className="w-6 h-6" />
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener"
+              className="hover:text-blue-500"
+            >
+              <FaTwitter className="w-6 h-6" />
             </a>
           </div>
           <form className="flex">
@@ -105,11 +121,11 @@ function Footer() {
         </div>
       </div>
 
-      <div className=" flex text-center items-center justify-center gap-3 border-t border-gray-200 dark:border-gray-800 mt-8 py-4 text-center text-xs text-slate-500 dark:text-slate-400">
-        <Copyright className="w-4 h-4 hover:text-blue-500" />
-        <span className="text-md text-center font-semibold mb-3 ">
-          AI Powered Learning Platform
-        </span>
+      <div className=" flex  items-center justify-center gap-3 border-t border-gray-200 dark:border-gray-800 mt-8 py-4 text-xs text-slate-500 dark:text-slate-400">
+        <p>
+          &copy; {new Date().getFullYear()}
+          AI Powered Learning Platform . Built with ❤️ by Degife Tise
+        </p>
       </div>
     </footer>
   );
