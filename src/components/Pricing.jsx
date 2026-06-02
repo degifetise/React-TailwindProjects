@@ -32,20 +32,22 @@ function Pricing() {
   return (
     <section id="pricing" className="py-6 bg-slate-950">
       <h2 className="text-[clamp(1.75rem,4vw,2rem)] font-semibold  sm:mb-6 animate-in slide-in-from-bottom duration-900 leading-tight italic tracking-wide text-center mb-4">
-        Feature{" "}
+        Feature
         <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
-          Pricing{" "}
-        </span>{" "}
+          Pricing
+        </span>
         plan
       </h2>
       <div className="grid md:grid-cols-3 gap-8 px-6 md:px-20">
         {plans.map((plan, i) => (
           <div
             key={i}
-            className=" bg-gradient-to-br from-gray-950/30 border border-slate-500 to-gray-800/30 backdrop-blur-md shadow-lg rounded-lg p-6 text-center hover:scale-105 hover:shadow-2xl transition-transform duration-300 ease-out"
+            className=" bg-gradient-to-br from-gray-950/30 to-gray-800/30 backdrop-blur-md shadow-lg rounded-lg p-6 text-center hover:scale-105 hover:shadow-2xl transition-transform duration-300 ease-out"
           >
             <div className="flex items-center gap-2 justify-center">
-              <h3 className="text-2xl font-semibold">{plan.name}</h3>
+              <h3 className="text-[clamp(1.2rem,4vw,1.5rem)] font-semibold">
+                {plan.name}
+              </h3>
               <p className="text-3xl font-bold mt-2 text-slate-400">
                 {plan.price}
               </p>
