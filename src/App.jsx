@@ -7,6 +7,7 @@ import FileUploadAI from "./components/FileUploadAI";
 import HowItWorks from "./components/HowItWorks";
 import FAQ from "./components/FAQ";
 import Testimonials from "./components/Testimonials";
+import Footer from "./Footer";
 function App() {
   return (
     <div className="min-h-screen bg-slate-950 text-white overflow-hidden">
@@ -17,6 +18,7 @@ function App() {
       <Pricing />
       <FAQ />
       <Testimonials />
+      <Footer />
       <div>
         <FileUploadAI />
       </div>

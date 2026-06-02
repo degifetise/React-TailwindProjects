@@ -114,7 +114,7 @@ function Navbar() {
               Testimonials
             </a>
             <button onClick={ToggleTheme}>
-              {darkMode ? <Sun /> : <Moon />}
+              {darkMode ? <Moon /> : <Sun />}
             </button>
           </div>
         </div>
