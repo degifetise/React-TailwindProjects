@@ -32,29 +32,41 @@ export default function ChatWithAI() {
       });
 
       const data = await res.json();
-      const fullText = data.choices[0].message.content;
+      console.log("API response:", data); // Debugging
 
-      let index = 0;
-      const words = fullText.split(" ");
+      if (data.choices && data.choices.length > 0) {
+        const fullText = data.choices[0].message.content;
+        const words = fullText.split(" ");
+        let index = 0;
 
-      const interval = setInterval(() => {
-        setMessages((prev) => {
-          const lastMsg = prev[prev.length - 1];
-          if (lastMsg?.role === "assistant") {
-            const updated = [...prev];
-            updated[updated.length - 1].content += " " + words[index];
-            return updated;
-          } else {
-            return [...prev, { role: "assistant", content: words[index] }];
+        const interval = setInterval(() => {
+          setMessages((prev) => {
+            const lastMsg = prev[prev.length - 1];
+            if (lastMsg?.role === "assistant") {
+              const updated = [...prev];
+              updated[updated.length - 1].content += " " + words[index];
+              return updated;
+            } else {
+              return [...prev, { role: "assistant", content: words[index] }];
+            }
+          });
+
+          index++;
+          if (index >= words.length) {
+            clearInterval(interval);
+            setLoading(false);
           }
-        });
-
-        index++;
-        if (index >= words.length) {
-          clearInterval(interval);
-          setLoading(false);
-        }
-      }, 80);
+        }, 80);
+      } else {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "assistant",
+            content: "⚠️ API returned no choices: " + JSON.stringify(data),
+          },
+        ]);
+        setLoading(false);
+      }
     } catch (err) {
       setMessages((prev) => [
         ...prev,

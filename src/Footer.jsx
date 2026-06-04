@@ -7,7 +7,7 @@ import {
   FaTwitter,
   FaYoutube,
 } from "react-icons/fa";
-import { Copyright } from "lucide-react";
+
 
 function Footer() {
   const { darkMode } = useTheme();
