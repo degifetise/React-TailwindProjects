@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
+
 function Navbar() {
   const { darkMode, ToggleTheme } = useTheme();
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
@@ -24,13 +25,14 @@ function Navbar() {
           </div>
           {/* nav links */}
           <div className="hidden md:flex items-center space-x-6 sm:space-x-8 md:space-x-10">
-            <a
-              href="#features"
-              className="text-gray-300 hover:text-white hover:cursor-pointer text-sm lg:text-base"
-            >
-              Features
-            </a>
-
+          
+              <a
+                href="#features"
+                className="text-gray-300 hover:text-white hover:cursor-pointer text-sm lg:text-base"
+              >
+                Features
+              </a>
+          
             <a
               href="#how-it-works"
               className="text-gray-300 hover:text-white hover:cursor-pointer text-sm lg:text-base"
@@ -77,7 +79,7 @@ function Navbar() {
 
       {mobileMenuIsOpen && (
         <div className="md:hidden  bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 animate-in slide-in-from-top duration-300">
-          <div className="flex flex-col items-center p-4 sm:py-6 space-y-3 sm:space-y-4">
+          <div className="flex  flex-col items-center p-4 sm:py-6 space-y-3 sm:space-y-4">
             <a
               href="#features"
               onClick={() => setMobileMenuIsOpen(false)}

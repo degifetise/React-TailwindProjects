@@ -7,21 +7,31 @@ import FileUploadAI from "./components/FileUploadAI";
 import HowItWorks from "./components/HowItWorks";
 import FAQ from "./components/FAQ";
 import Testimonials from "./components/Testimonials";
+import ContactUs from "./components/ContactUs";
 import Footer from "./Footer";
+
+import ExperienceTimeline from "./components/ExperienceTimeline";
+import PortHome from "./components/PortHome";
+
+
 function App() {
   return (
     <div className="min-h-screen bg-slate-950 text-white overflow-hidden">
       <Navbar />
+
       <Hero />
       <Features />
       <HowItWorks />
       <Pricing />
       <FAQ />
       <Testimonials />
+      <ContactUs />
       <Footer />
-      <div>
-        <FileUploadAI />
-      </div>
+
+      <ExperienceTimeline />
+      <PortHome />
+   
+      <FileUploadAI />
     </div>
   );
 }

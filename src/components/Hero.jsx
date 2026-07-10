@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Play, Sparkle } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
-import { motion } from "framer-motion";
 function Hero() {
   const { darkMode } = useTheme();
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
   const lists = [
     {
       id: 1,
@@ -19,12 +19,17 @@ function Hero() {
     },
   ];
 
+  const handleAnswer = (answer) => {
+    setSelectedAnswer(answer);
+  };
+
   // Example questions array
   const quizQuestions = [
     {
       type: "chooseTwo",
       question: "Which react hooks are commonly used for state management?",
       options: ["useState", "useRef", "useEffect", "useMemo"],
+      correct: "useState",
     },
   ];
 
@@ -90,12 +95,12 @@ function Hero() {
                 code smarter and grow faster.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 lg:gap-4 mb-8 sm:mb-12 animate-in slide-in-from-bottom duration-700 delay-900">
-                <button className="group hover:scale-105 w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-400 via-cyan-400 rounded-lg font-semibold text-sm sm:text-base transition-all duration-700 hover:scale-102 flex items-center justify-center space-x-2">
+              <div className="overflow-hidden flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 lg:gap-4 mb-8 sm:mb-12 animate-in slide-in-from-bottom duration-700 delay-900">
+                <button className="group hover:scale-105 w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-slate-800 rounded-lg font-semibold text-sm sm:text-base transition-all duration-700 hover:scale-102 flex items-center justify-center space-x-2">
                   <span>Start Free</span>
                   <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </button>
-                <button className="group hover:scale-105 w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/5 backdrop-blur-sm border border-white/5 rounded-lg font-semibold text-sm sm:text-base transition-all duration-700 hover:bg-white/10 flex items-center justify-center space-x-2">
+                <button className="group hover:scale-105 w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-4 bg-white/5 backdrop-blur-sm border border-white/5 rounded-lg font-semibold text-sm sm:text-base transition-all duration-700 hover:bg-white/10 flex items-center justify-center space-x-2">
                   <div className="p-1 bg-gradient-to-tr from-blue-600 via-cyan-200 to-slate-700 rounded-full group-hover:bg-white/20 duration-300 transition-colors">
                     <Play className="group-hover:translate-x-1 transition-transform fill-white" />
                   </div>
@@ -109,22 +114,34 @@ function Hero() {
           {/* AI Quiz Card */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex flex-col  gap-6">
             <div className="bg-white/5 backdrop-blur-xl rounded-xl p-4 shadow-2xl border border-white/10">
+              <div className="flex gap-1 p-2">
+                <span className="w-3 h-3 rounded-full bg-pink-600 animate-bounce duration-1000"></span>
+                <span className="w-3 h-3 rounded-full bg-purple-400 animate-bounce duration-700"></span>
+                <span className="w-3 h-3 rounded-full bg-green-400 animate-bounce duration-500"></span>
+              </div>
+
               <h3 className="text-pink-500 text-sm font-semibold mb-2 text-center">
                 AI Roadmap → Learning Path
               </h3>
               <div className="bg-gradient-to-br from-gray-900/30 to-gray-800/30 backdrop-blur-md rounded-lg p-4 border border-white/10 shadow-lg">
-                <ol className="list-disc list-inside text-sm text-gray-400 space-y-1">
+                <ol className="list-disc  flex flex-col text-left list-inside text-sm text-gray-400 space-y-1">
                   {lists.map((list) => (
-                    <li>{list.name}</li>
+                    <li key={list.id}>{list.name}</li>
                   ))}
                 </ol>
               </div>
-              <span className="text-xs bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent mt-3 border-t-2 p-2 text-center block">
+              <span className="text-xs bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent mt-3 border-t p-2 text-center block">
                 AI Guides Your Journey
               </span>
             </div>
             {/* AI Code Explainer Card */}
             <div className="relative bg-white/5 backdrop-filter-xl rounded-xl p-4 shadow-xl border border-white/10">
+              <div className="flex gap-1 p-2">
+                <span className="w-3 h-3 rounded-full bg-purple-400 animate-bounce duration-1000"></span>
+                <span className="w-3 h-3 rounded-full bg-pink-600 animate-bounce duration-700"></span>
+                <span className="w-3 h-3 rounded-full bg-green-400 animate-bounce duration-500"></span>
+              </div>
+
               <h3 className="text-purple-400 text-sm font-semibold mb-2 text-center">
                 AI Code → Explanation
               </h3>
@@ -140,13 +157,18 @@ function Hero() {
                   </code>
                 </p>
               </div>
-              <span className="text-xs bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent mt-3 border-t-2 p-2 text-center block">
+              <span className="text-xs bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent mt-3 border-t p-2 text-center block">
                 AI Explains Code Instantly
               </span>
             </div>
             {/* AI Quiz Card */}
 
             <div className="relative bg-white/5 backdrop-blur-xl rounded-xl p-4 shadow-2xl border border-white/10">
+              <div className=" flex gap-1 p-2">
+                <span className="w-3 h-3 rounded-full bg-green-400 animate-bounce duration-500"></span>
+                <span className="w-3 h-3 rounded-full bg-purple-400 animate-bounce duration-700"></span>
+                <span className="w-3 h-3 rounded-full bg-pink-600 animate-bounce duration-1000"></span>
+              </div>
               <h3 className="text-green-400 text-sm font-semibold mb-2 text-center">
                 AI Quiz → Practice Questions
               </h3>
@@ -162,7 +184,8 @@ function Hero() {
                       {q.options.map((opt, j) => (
                         <li
                           key={j}
-                          className="bg-white/10 hover:bg-green-500/30 p-2 rounded cursor-pointer"
+                          onClick={(e) => setSelectedAnswer(e.target.value)}
+                          className={`${selectedAnswer === opt ? (opt === quizQuestions.correct ? "bg-green-500/30 text-white" : "bg-purple-500") : "bg-white/10"} bg-white/10 hover:bg-green-500/30 p-2 rounded cursor-pointer`}
                         >
                           {opt}
                         </li>
@@ -171,7 +194,7 @@ function Hero() {
                   </div>
                 ))}
               </div>
-              <span className="text-xs bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent mt-3 border-t-2 p-2 text-center block">
+              <span className="text-xs bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent mt-3 border-t p-2 text-center block">
                 Powered by AI Learning
               </span>
             </div>
@@ -179,8 +202,6 @@ function Hero() {
         </div>
       </div>
     </section>
-
-
   );
 }
 

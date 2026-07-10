@@ -1,11 +1,7 @@
-import React from 'react'
+import "react";
 
 function Footer() {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div className="flex justify-center items-center "></div>;
 }
 
-export default Footer
+export default Footer;

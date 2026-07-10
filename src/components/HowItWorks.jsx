@@ -27,9 +27,9 @@ function HowItWorks() {
         {steps.map((step, index) => (
           <div
             key={index}
-            className="bg-gradient-to-br from-gray-900/30 to-gray-800/30 backdrop-blur-md shadow-lg rounded-lg p-6 text-center hover:scale-105 hover:shadow-2xl transition-transform duration-300 ease-out"
+            className="group bg-gradient-to-br from-gray-900/30 to-gray-800/30 backdrop-blur-md shadow-lg rounded-lg p-6 text-center hover:scale-100 hover:shadow-2xl transition-transform duration-300 ease-out"
           >
-            {step.icon}
+            <span className="group-hover:scale-105"> {step.icon}</span>
             <h3 className="text-xl font-semibold mt-4">{step.title}</h3>
             <p className="mt-2 text-slate-300">{step.desc}</p>
           </div>

@@ -59,7 +59,7 @@ function Testimonials() {
         >
           {testimonials.map((t, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-slate-950 p-6 sm:p-8 md:p-10  backdrop-blur-2xl rounded-xl text-center hover:scale-105 transform transition-all duration-500 ease-in-out">
+              <div className="bg-slate-950 p-6 sm:p-8 md:p-10  backdrop-blur-2xl rounded-xl text-center hover:shadow-xl transform transition-all duration-500 ease-in-out">
                 <Quote className="w-8 h-8 text-blue-500 mx-auto mb-4 absolute top-2 left-4" />
                 <img
                   src={t.image}

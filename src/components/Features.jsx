@@ -2,7 +2,7 @@ import "react";
 import { Bot, FileUp, HelpCircle, FileText } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 function Features() {
-  const { darkMode } = useTheme();
+  const { dark } = useTheme();
   const features = [
     {
       id: 1,
@@ -26,7 +26,7 @@ function Features() {
 
     {
       id: 4,
-      icon: <HelpCircle className="text-purple-500 w-8 h-8 mx-auto" />,
+      icon: <HelpCircle className=" text-purple-500 w-8 h-8 mx-auto" />,
       title: "Quiz Generator",
       desc: "Turn your notes into interactive learning. AI automatically creates multiple-choice questions, short answers, and practice tests to help you retain knowledge and prepare confidently for exams.",
     },
@@ -45,12 +45,12 @@ function Features() {
         {features.map((item) => (
           <div
             key={item.id}
-            className="group bg-slate-900/70 backdrop-blur-xl shadow-xl rounded-2xl p-8 text-center 
-                       hover:scale-105 hover:shadow-2xl transition-transform duration-300 ease-out"
+            className="group overflow-hidden bg-slate-900 backdrop-blur-xl shadow-xl rounded-2xl p-8 text-center 
+                       hover:scale-100 hover:shadow-2xl transition-transform duration-300 ease-out"
           >
-            {item.icon}
+            <span className="group-hover:scale-110">{item.icon}</span>
             <div>
-              <h3 className="text-[clamp(1.75rem,4vw,2rem)] font-semibold mt-4 sm:mt-6">
+              <h3 className="text-[clamp(1.75rem,4vw,2rem)] font-semibold mt-4 sm:mt-6 text-blue-600">
                 {item.title}
               </h3>
               <p className="text-gray-600 mt-2text-slate-300">{item.desc}</p>

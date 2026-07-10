@@ -4,23 +4,35 @@ import {
   FaFacebook,
   FaGithub,
   FaLinkedin,
+  FaMapMarkerAlt,
+  FaMobile,
+  FaQuestion,
   FaTwitter,
   FaYoutube,
 } from "react-icons/fa";
 
+import { Mail } from "lucide-react";
+import { useState } from "react";
+import { useRef } from "react";
 
 function Footer() {
+  const [email, setEmail] = useState("");
+  const handleEmail = () => {
+    const inputRef = useRef();
+    if (email.value == "") {
+      inputRef.current.focus();
+    }
+  };
+
   const { darkMode } = useTheme();
   return (
-    <footer className="relative pb-5 bg-gray-100  dark:bg-gray-950 text-slate-700 dark:text-slate-300 border-t border-gray-200 dark:border-gray-800">
+    <footer className="relative pb-5  bg-gray-100  dark:bg-gray-950 text-slate-700 dark:text-slate-300 border-t border-gray-200 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="p-3">
           <h2 className="text-lg mt-3 font-bold bg-gradient-to-r from-blue-500 via-cyan-400 bg-clip-text text-transparent">
-            {" "}
             AI Learning Platform
           </h2>
           <p className="mt-3 text-sm leading-relaxed">
-            {" "}
             Empowering developers to code smarter, fix bugs faster, and grow
             every day with AI‑powered guidance.
           </p>
@@ -28,7 +40,7 @@ function Footer() {
 
         <div className="p-3">
           <h3 className="text-md font-semibold mb-3">Quick Links</h3>
-          <ul className="flex  flex-col space-y-2 text-sm md:grid md:grid-cols-2 ">
+          <ul className="flex  flex-col space-y-2 text-sm ">
             <li>
               <a href="#features" className="hover:text-blue-400 transition">
                 Home
@@ -57,6 +69,36 @@ function Footer() {
             <li>
               <a href="#features" className="hover:text-blue-400 transition">
                 Testimonials
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div className="p-3">
+          <h3 className="text-md font-semibold mb-3">Support</h3>
+          <ul className="flex  flex-col space-y-2 text-sm ">
+            <li className="flex gap-1">
+              <Mail />
+              <a href="#features" className="hover:text-blue-400 transition">
+                Contact
+              </a>
+            </li>
+            <li className="flex gap-1">
+              <FaQuestion />
+              <a href="#features" className="hover:text-blue-400 transition">
+                FAQ
+              </a>
+            </li>
+            <li className="flex gap-1">
+              <FaMobile />
+              <a href="#features" className="hover:text-blue-400 transition">
+                Call us
+              </a>
+            </li>
+            <li className="flex gap-1">
+              <FaMapMarkerAlt />
+              <a href="#features" className="hover:text-blue-400 transition">
+                Map
               </a>
             </li>
           </ul>
@@ -111,10 +153,12 @@ function Footer() {
           <form className="flex">
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Subscribe for updates"
               className="w-full py-3 px-2 rounded-l-md outline-none text-sm bg-slate-200 dark:bg-slate-800"
             />
-            <button className="py-2 px-4 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 text-white rounded-r-md text-sm font-semibold hover:opacity-90 transition">
+            <button onClick={handleEmail} className="py-2 px-4 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 text-white rounded-r-md text-sm font-semibold hover:opacity-90 transition">
               Join
             </button>
           </form>

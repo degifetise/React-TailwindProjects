@@ -33,16 +33,19 @@ export default function ChatWithAI() {
     setFile(null);
 
     try {
+      // Swapped to Google's OpenAI-compatible Gemini endpoint
       const res = await fetch(
-        "https://api-inference.huggingface.co/v1/chat/completions",
+        "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_HF_API_KEY}`,
+            // Points directly to your new VITE_GEMINI_API_KEY
+            Authorization: `Bearer ${import.meta.env.VITE_GEMINI_API_KEY}`,
           },
           body: JSON.stringify({
-            model: "Qwen/Qwen2.5-72B-Instruct",
+            // Using the ultra-fast and smart Gemini 2.5 Flash model
+            model: "gemini-2.5-flash",
             messages: [
               { role: "system", content: "You are a helpful study assistant." },
               { role: "user", content: inputText },
@@ -106,14 +109,14 @@ export default function ChatWithAI() {
   };
 
   return (
-    <div className="z-50">
+    <div className="z-50 resize-x">
       {/* Floating Action Launch Trigger */}
       {!showChat && (
         <button
           onClick={() => setShowChat(true)}
           className="fixed bottom-6 right-6 flex items-center gap-2 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-600 text-white px-5 py-3 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200 z-50"
         >
-          <MessageCircle className="w-5 h-5" /> Chat with AI
+          <MessageCircle className="w-5 h-5" />
         </button>
       )}
 
@@ -151,17 +154,15 @@ export default function ChatWithAI() {
                   key={i}
                   className={`p-3 rounded-xl max-w-[85%] text-sm whitespace-pre-wrap break-words shadow-sm ${
                     msg.role === "user"
-                      ? 
-                        "bg-blue-600 text-white ml-auto rounded-tr-none"
-                      : 
-                        "bg-slate-800 text-slate-100 mr-auto rounded-tl-none border border-slate-700"
+                      ? "bg-blue-900 text-white ml-auto rounded-tr-none"
+                      : "bg-slate-800 text-slate-100 mr-auto rounded-tl-none border border-slate-700"
                   }`}
                 >
                   {msg.content}
                 </div>
               ))}
 
-              {loading && (
+              {loading && messages[messages.length - 1]?.content === "" && (
                 <div className="p-3 rounded-xl max-w-[40%] bg-slate-800 border border-slate-700 text-slate-400 mr-auto rounded-tl-none animate-pulse flex items-center gap-1 text-sm">
                   Thinking...
                 </div>
@@ -169,7 +170,6 @@ export default function ChatWithAI() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input Form Actions */}
             <div className="space-y-2">
               <textarea
                 value={text}
