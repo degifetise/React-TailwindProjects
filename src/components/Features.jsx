@@ -33,10 +33,7 @@ function Features() {
   ];
 
   return (
-    <section
-      id="features"
-      className="py-20 dark:bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 bg-slate-300"
-    >
+    <section id="features" className="py-20  bg-gray-950">
       <h1 className="text-[clamp(1.2rem,4vw,1.5rem)] mb-8 text-center bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent block sm:mb-10">
         Powerful Features{" "}
         <span className="text-slate-200">to Boost Your Learning</span>
@@ -45,7 +42,7 @@ function Features() {
         {features.map((item) => (
           <div
             key={item.id}
-            className="group overflow-hidden bg-slate-900 backdrop-blur-xl shadow-xl rounded-2xl p-8 text-center 
+            className="group overflow-hidden border border-white/10 backdrop-blur-xl shadow-xl rounded-2xl p-8 text-center 
                        hover:scale-100 hover:shadow-2xl transition-transform duration-300 ease-out"
           >
             <span className="group-hover:scale-110">{item.icon}</span>
@@ -53,7 +50,9 @@ function Features() {
               <h3 className="text-[clamp(1.75rem,4vw,2rem)] font-semibold mt-4 sm:mt-6 text-blue-600">
                 {item.title}
               </h3>
-              <p className="text-gray-600 mt-2text-slate-300">{item.desc}</p>
+              <p className="text-gray-500 font-semibold  mt-2text-slate-300">
+                {item.desc}
+              </p>
             </div>
           </div>
         ))}

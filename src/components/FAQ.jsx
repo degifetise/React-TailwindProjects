@@ -74,7 +74,9 @@ function FAQ() {
           >
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <h3 className="text-lg font-semibold">{faq.question}</h3>
+                <h3 className="text-lg font-semibold opacity-55">
+                  {faq.question}
+                </h3>
               </div>
               {openIndex === i ? (
                 <ChevronUp className="w-5 h-5 text-white" />

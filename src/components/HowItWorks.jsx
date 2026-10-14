@@ -23,15 +23,15 @@ function HowItWorks() {
       <h2 className="text-[clamp(1.75rem,4vw,2rem)] font-semibold  sm:mb-6 animate-in slide-in-from-bottom duration-900 leading-tight italic tracking-wide text-center mb-4">
         How It works
       </h2>
-      <div className="grid md:grid-cols-3 gap-8 px-6 md:px-20">
+      <div className=" grid md:grid-cols-3 gap-8 px-6 md:px-20">
         {steps.map((step, index) => (
           <div
             key={index}
-            className="group bg-gradient-to-br from-gray-900/30 to-gray-800/30 backdrop-blur-md shadow-lg rounded-lg p-6 text-center hover:scale-100 hover:shadow-2xl transition-transform duration-300 ease-out"
+            className=" group border border-white/10 backdrop-blur-md shadow-lg rounded-lg p-6 text-center hover:scale-100 hover:shadow-2xl transition-transform duration-300 ease-out"
           >
-            <span className="group-hover:scale-105"> {step.icon}</span>
-            <h3 className="text-xl font-semibold mt-4">{step.title}</h3>
-            <p className="mt-2 text-slate-300">{step.desc}</p>
+            <span className="group-hover:scale-150"> {step.icon}</span>
+            <h3 className="text-xl font-semibold mt-4 text-blue-600">{step.title}</h3>
+            <p className="mt-2 text-slate-500 font-semibold">{step.desc}</p>
           </div>
         ))}
       </div>

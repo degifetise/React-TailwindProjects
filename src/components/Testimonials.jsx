@@ -6,6 +6,7 @@ import "swiper/css/effect-fade";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, EffectFade, Autoplay } from "swiper/modules";
 import { Quote } from "lucide-react";
+import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 
 function Testimonials() {
   const testimonials = [
@@ -32,10 +33,7 @@ function Testimonials() {
     },
   ];
   return (
-    <section
-      id="testimonials"
-      className="py-20 bg-slate-900  flex items-center"
-    >
+    <section id="testimonials" className="py-20 bg-gray-950  flex items-center">
       <div className="max-w-4xl mx-auto px-6 w-full">
         <h2 className="text-[clamp(1.75rem,4vw,2rem)] font-semibold  sm:mb-6 animate-in slide-in-from-bottom duration-900 leading-tight italic tracking-wide text-center mb-4">
           What people
@@ -47,7 +45,7 @@ function Testimonials() {
           modules={[Pagination, Navigation, EffectFade, Autoplay]}
           spaceBetween={30}
           slidesPerView={1}
-          pagination={{ type: "progressbar", clickable: true }}
+          pagination={{ type: "fraction", clickable: true }}
           loop={true}
           effect="fade"
           autoplay={{
@@ -59,12 +57,12 @@ function Testimonials() {
         >
           {testimonials.map((t, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-slate-950 p-6 sm:p-8 md:p-10  backdrop-blur-2xl rounded-xl text-center hover:shadow-xl transform transition-all duration-500 ease-in-out">
-                <Quote className="w-8 h-8 text-blue-500 mx-auto mb-4 absolute top-2 left-4" />
+              <div className="bg-gray-950 border border-slate-900 p-6 sm:p-8 md:p-10  backdrop-blur-2xl rounded-xl text-center hover:shadow-xl transform transition-all duration-500 ease-in-out">
+                <FaQuoteLeft className="w-8 h-8 text-slate-600 mx-auto mb-4 absolute top-2 left-4" />
                 <img
                   src={t.image}
                   alt={t.name}
-                  className="w-20 h-20 sm:w-32 sm:h-32 md:h-44 md:w-44 rounded-full mx-auto mb-4  border-4 border-blue-500"
+                  className="w-20 h-20 sm:w-32 sm:h-32 md:h-44 md:w-44 rounded-full mx-auto mb-4  border-4 border-blue-950"
                 />
                 <p className="text-lg font-semibold text-gray-300 italic mb-4">
                   {t.quote}

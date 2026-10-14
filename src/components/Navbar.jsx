@@ -25,14 +25,13 @@ function Navbar() {
           </div>
           {/* nav links */}
           <div className="hidden md:flex items-center space-x-6 sm:space-x-8 md:space-x-10">
-          
-              <a
-                href="#features"
-                className="text-gray-300 hover:text-white hover:cursor-pointer text-sm lg:text-base"
-              >
-                Features
-              </a>
-          
+            <a
+              href="#features"
+              className="text-gray-300 hover:text-white hover:cursor-pointer text-sm lg:text-base"
+            >
+              Features
+            </a>
+
             <a
               href="#how-it-works"
               className="text-gray-300 hover:text-white hover:cursor-pointer text-sm lg:text-base"

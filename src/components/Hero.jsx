@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Play, Sparkle } from "lucide-react";
-import { useTheme } from "../context/ThemeContext";
+
 function Hero() {
-  const { darkMode } = useTheme();
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const lists = [
     {
@@ -18,10 +17,6 @@ function Hero() {
       name: "Build projects with feedback",
     },
   ];
-
-  const handleAnswer = (answer) => {
-    setSelectedAnswer(answer);
-  };
 
   // Example questions array
   const quizQuestions = [
@@ -47,7 +42,7 @@ function Hero() {
   }, []);
 
   return (
-    <section className="relative bg-gray-50 text-slate-900 dark:bg-gray-950 dark:text-slate-300 mt-20 min-h-screen flex items-center justify-center pt-16 sm:pt-20 px-4 sm:px-16 lg:px-8 overflow-hidden">
+    <section className="relative text-slate-900 bg-gray-950  mt-20 min-h-screen flex items-center justify-center pt-16 sm:pt-20 px-4 sm:px-16 lg:px-8 overflow-hidden">
       <div
         className="absolute inset-0 opacity-30"
         style={{
@@ -67,7 +62,8 @@ function Hero() {
             <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-sm mb-2 sm:mb-6 animate-in slide-in-from-bottom duration-700">
               <Sparkle className="w-4 h-4 text-blue-400 animate-scalePulse animate-colorCycle " />
               <span className="text-xs sm:text-sm text-blue-300">
-                Future AI Powered Learning PLatform
+                Future <span className="text-blue-400 font-extrabold">AI</span>{" "}
+                Powered Learning Platform
               </span>
             </div>
 
@@ -95,16 +91,16 @@ function Hero() {
                 code smarter and grow faster.
               </p>
 
-              <div className="overflow-hidden flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 lg:gap-4 mb-8 sm:mb-12 animate-in slide-in-from-bottom duration-700 delay-900">
-                <button className="group hover:scale-105 w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-slate-800 rounded-lg font-semibold text-sm sm:text-base transition-all duration-700 hover:scale-102 flex items-center justify-center space-x-2">
+              <div className="overflow-hidden flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 lg:gap-4 lg mb-8 sm:mb-12 animate-in slide-in-from-bottom duration-700 delay-900">
+                <button className="text-white group hover:scale-105 w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 rounded-lg font-bold text-sm sm:text-base transition-all duration-700 hover:scale-102 flex items-center justify-center space-x-2">
                   <span>Start Free</span>
                   <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </button>
-                <button className="group hover:scale-105 w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-4 bg-white/5 backdrop-blur-sm border border-white/5 rounded-lg font-semibold text-sm sm:text-base transition-all duration-700 hover:bg-white/10 flex items-center justify-center space-x-2">
+                <button className="group bg-blue-600 group hover:scale-105 w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-4 backdrop-blur-sm border border-white/5 rounded-lg font-semibold text-sm sm:text-base transition-all duration-700 flex items-center justify-center space-x-2">
                   <div className="p-1 bg-gradient-to-tr from-blue-600 via-cyan-200 to-slate-700 rounded-full group-hover:bg-white/20 duration-300 transition-colors">
-                    <Play className="group-hover:translate-x-1 transition-transform fill-white" />
+                    <Play className="group-hover:rotate-90 group-hover:translate-x-1 group-hover:p-1 transition-transform fill-white" />
                   </div>
-                  <span>Watch Demo</span>
+                  <span className="text-white">Watch Demo</span>
                 </button>
               </div>
             </div>
@@ -113,15 +109,15 @@ function Hero() {
           {/* AI Summary Card */}
           {/* AI Quiz Card */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex flex-col  gap-6">
-            <div className="bg-white/5 backdrop-blur-xl rounded-xl p-4 shadow-2xl border border-white/10">
+            <div className=" backdrop-blur-xl rounded-xl p-4 shadow-2xl border border-white/10">
               <div className="flex gap-1 p-2">
                 <span className="w-3 h-3 rounded-full bg-pink-600 animate-bounce duration-1000"></span>
                 <span className="w-3 h-3 rounded-full bg-purple-400 animate-bounce duration-700"></span>
                 <span className="w-3 h-3 rounded-full bg-green-400 animate-bounce duration-500"></span>
               </div>
 
-              <h3 className="text-pink-500 text-sm font-semibold mb-2 text-center">
-                AI Roadmap → Learning Path
+              <h3 className="text-blue-100 text-sm font-semibold mb-2 text-center">
+                AI Roadmap Learning Path
               </h3>
               <div className="bg-gradient-to-br from-gray-900/30 to-gray-800/30 backdrop-blur-md rounded-lg p-4 border border-white/10 shadow-lg">
                 <ol className="list-disc  flex flex-col text-left list-inside text-sm text-gray-400 space-y-1">
@@ -135,15 +131,15 @@ function Hero() {
               </span>
             </div>
             {/* AI Code Explainer Card */}
-            <div className="relative bg-white/5 backdrop-filter-xl rounded-xl p-4 shadow-xl border border-white/10">
+            <div className="relative  backdrop-filter-xl rounded-xl p-4 shadow-xl border border-white/10">
               <div className="flex gap-1 p-2">
                 <span className="w-3 h-3 rounded-full bg-purple-400 animate-bounce duration-1000"></span>
                 <span className="w-3 h-3 rounded-full bg-pink-600 animate-bounce duration-700"></span>
                 <span className="w-3 h-3 rounded-full bg-green-400 animate-bounce duration-500"></span>
               </div>
 
-              <h3 className="text-purple-400 text-sm font-semibold mb-2 text-center">
-                AI Code → Explanation
+              <h3 className="text-blue-100 text-sm font-semibold mb-2 text-center">
+                AI Code  Explanation
               </h3>
               <div className="bg-gradient-to-br from-gray-900/30 to-gray-800/30 backdrop-blur-md  rounded-lg p-4 border-white/10 shadow-lg">
                 <p className="text-gray-400 text-sm">
@@ -151,7 +147,7 @@ function Hero() {
                   state variables and updates them dynamically.
                 </p>
                 <p className="text-gray-400 text-xs mt-2">
-                  Example:{" "}
+                  Example:
                   <code className="text-pink-500">
                     const [count, setCount] = useState(0){" "}
                   </code>
@@ -163,14 +159,14 @@ function Hero() {
             </div>
             {/* AI Quiz Card */}
 
-            <div className="relative bg-white/5 backdrop-blur-xl rounded-xl p-4 shadow-2xl border border-white/10">
+            <div className="relative  backdrop-blur-xl rounded-xl p-4 shadow-2xl border border-white/10">
               <div className=" flex gap-1 p-2">
                 <span className="w-3 h-3 rounded-full bg-green-400 animate-bounce duration-500"></span>
                 <span className="w-3 h-3 rounded-full bg-purple-400 animate-bounce duration-700"></span>
                 <span className="w-3 h-3 rounded-full bg-pink-600 animate-bounce duration-1000"></span>
               </div>
-              <h3 className="text-green-400 text-sm font-semibold mb-2 text-center">
-                AI Quiz → Practice Questions
+              <h3 className="text-blue-100 text-sm font-semibold mb-2 text-center">
+                AI Quiz  <span className="font-extrabold text-blue-700">Practice Questions</span>
               </h3>
               <div
                 className="bg-gradient-to-br from-gray-900/30 to-gray-800/30 
@@ -178,9 +174,9 @@ function Hero() {
               >
                 {quizQuestions.map((q, i) => (
                   <div key={i} className="mb-4">
-                    <p className="text-slate-400 text-sm mb-2"> {q.question}</p>
+                    <p className="text-slate-100 text-sm mb-2"> {q.question}</p>
 
-                    <ul className="space-y-2 text-sm">
+                    <ul className="space-y-2 text-sm text-slate-300">
                       {q.options.map((opt, j) => (
                         <li
                           key={j}

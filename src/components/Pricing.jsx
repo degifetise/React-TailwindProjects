@@ -1,5 +1,5 @@
 import "react";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Circle, CircleAlertIcon, MoveRight } from "lucide-react";
 function Pricing() {
   const plans = [
     {
@@ -12,8 +12,20 @@ function Pricing() {
     {
       id: 2,
       name: "Pro",
+      duration: "6-month",
+      price: "$169",
+      features: [
+        "Advanced AI Tutoring",
+        "Upload PDF & Words",
+        "Quiz Generator",
+      ],
+    },
+
+    {
+      id: 3,
+      name: "Pro",
       duration: "1-year",
-      price: "$199",
+      price: "$259",
       features: [
         "Advanced AI Tutoring",
         "Upload PDF & Words",
@@ -21,10 +33,10 @@ function Pricing() {
       ],
     },
     {
-      id: 3,
+      id: 4,
       name: "Enterprise",
-      price: "$299",
-      duration: "3-year",
+      price: "$311",
+      duration: "1.5-year",
       features: ["Unlimited uploads", "Custom Ai models", "Priority support"],
     },
   ];
@@ -38,14 +50,15 @@ function Pricing() {
         </span>
         plan
       </h2>
-      <div className="grid md:grid-cols-3 gap-8 px-6 md:px-20">
+      <div className="grid md:grid-cols-2 gap-8 px-6 md:px-20">
         {plans.map((plan, i) => (
           <div
             key={i}
-            className=" bg-gradient-to-br from-gray-950/30 to-gray-800/30 backdrop-blur-md shadow-lg rounded-lg p-6 text-center hover:scale-100 hover:shadow-2xl transition-transform duration-300 ease-out"
+            className="mt-2 group relative border-2  border-gray-800 bg-gray-950 backdrop-blur-md shadow-lg rounded-lg p-6 text-center hover:-translate-y-1   transition-transform duration-300 ease-out"
           >
+
             <div className="flex items-center gap-2 justify-center">
-              <h3 className="text-[clamp(1.2rem,4vw,1.5rem)] font-semibold">
+              <h3 className=" text-[clamp(1.2rem,4vw,1.5rem)] font-semibold text-blue-600">
                 {plan.name}
               </h3>
               <p className="text-3xl font-bold mt-2 text-slate-400">
@@ -55,20 +68,18 @@ function Pricing() {
                 /{plan.duration}
               </span>
             </div>
-
             <ul className="mt-4 space-y-2 text-gray-600">
               {plan.features.map((f, k) => (
                 <li
                   key={k}
-                  className="flex items-center justify-center gap-2 text-slate-300"
+                  className="hover:underline flex items-center justify-center gap-2 text-slate-300"
                 >
-                  <CheckCircle className="text-blue-500 w-5 h-5" /> {f}
+                  <CircleAlertIcon className=" text-blue-500 w-5 h-5" /> {f}
                 </li>
               ))}
             </ul>
-
-            <button className=" text-slate-800 mt-6 block w-full shadow-lg backdrop-blur-lg  bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 px-6 py-3 rounded">
-              Choose {plan.name}
+            <button className="rounded-xl text-white mt-6 block w-full shadow-lg backdrop-blur-lg  bg-blue-900 px-6 py-3 hover:bg-blue-950">
+              Subscribe for {plan.name}
             </button>
           </div>
         ))}

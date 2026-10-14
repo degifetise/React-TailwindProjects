@@ -2,6 +2,25 @@ import { useState, useRef, useEffect } from "react";
 import { Send, MessageCircle, X } from "lucide-react";
 
 export default function ChatWithAI() {
+  const [chatWidth, setChatWidth] = useState("");
+  const dragging = useRef(false);
+
+  const handleMouseDown = () => {
+    dragging.current = true;
+  };
+
+  const handleMouseMove = (e) => {
+    if (!dragging.current) return;
+    const width = window.innerWidth - e.clientX;
+
+    if (width >= 300 && width <= 700) {
+      setChatWidth(width);
+    }
+  };
+  const handleMouseUp = () => {
+    dragging.current = false;
+  };
+
   const [showChat, setShowChat] = useState(false);
   const [file, setFile] = useState(null);
   const [text, setText] = useState("");
@@ -109,7 +128,11 @@ export default function ChatWithAI() {
   };
 
   return (
-    <div className="z-50 resize-x">
+    <div
+      className="z-50"
+      onMouseUp={handleMouseUp}
+      onMouseMove={handleMouseMove}
+    >
       {/* Floating Action Launch Trigger */}
       {!showChat && (
         <button
@@ -121,100 +144,106 @@ export default function ChatWithAI() {
       )}
 
       {/* Flyout Sidebar Chat Panel */}
-      <div
-        className={`fixed bottom-0 top-0 right-0 w-full sm:w-[460px] bg-slate-900 border-l border-slate-800 shadow-2xl transition-transform duration-300 ease-in-out z-50 ${
-          showChat ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        {showChat && (
-          <section className="flex flex-col h-full relative p-5">
-            {/* Header / Dismiss Action */}
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
-              <h2 className="text-lg font-bold text-white">
-                Study <span className="text-cyan-400">Assistant</span>
-              </h2>
-              <button
-                onClick={() => setShowChat(false)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Main Message Window */}
-            <div className="flex-1 overflow-y-auto rounded-xl p-4 bg-slate-950 border border-slate-800 space-y-4 mb-4 custom-scrollbar">
-              {messages.length === 0 && (
-                <p className="text-center text-sm text-slate-500 mt-8">
-                  Send a text message or load up notes to begin learning.
-                </p>
-              )}
-
-              {messages.map((msg, i) => (
-                <div
-                  key={i}
-                  className={`p-3 rounded-xl max-w-[85%] text-sm whitespace-pre-wrap break-words shadow-sm ${
-                    msg.role === "user"
-                      ? "bg-blue-900 text-white ml-auto rounded-tr-none"
-                      : "bg-slate-800 text-slate-100 mr-auto rounded-tl-none border border-slate-700"
-                  }`}
-                >
-                  {msg.content}
-                </div>
-              ))}
-
-              {loading && messages[messages.length - 1]?.content === "" && (
-                <div className="p-3 rounded-xl max-w-[40%] bg-slate-800 border border-slate-700 text-slate-400 mr-auto rounded-tl-none animate-pulse flex items-center gap-1 text-sm">
-                  Thinking...
-                </div>
-              )}
-              <div ref={messagesEndRef} />
-            </div>
-
-            <div className="space-y-2">
-              <textarea
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                placeholder="Type or paste your notes..."
-                className="w-full bg-slate-950 border border-slate-800 text-slate-200 placeholder-slate-500 rounded-xl p-3 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition resize-none"
-                rows="3"
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault();
-                    handleSubmit();
-                  }
-                }}
-              />
-
-              <div className="flex items-center gap-2">
-                <input
-                  type="file"
-                  id="chat-file-upload"
-                  accept=".pdf,.txt,.doc,.docx,.ppt,.pptx"
-                  onChange={(e) => setFile(e.target.files[0])}
-                  className="hidden"
-                />
-                <label
-                  htmlFor="chat-file-upload"
-                  className={`flex-1 truncate text-center text-xs p-2.5 rounded-lg border border-dashed border-slate-700 cursor-pointer transition ${
-                    file
-                      ? "bg-cyan-950/40 text-cyan-400 border-cyan-500"
-                      : "bg-slate-950 text-slate-400 hover:text-slate-300 hover:border-slate-600"
-                  }`}
-                >
-                  {file ? `📎 ${file.name}` : "Attach Document"}
-                </label>
-
+      <div>
+        <div
+          className={`fixed bottom-0 top-0 right-0 w-full sm:w-[460px] bg-slate-900 border-l border-slate-800 shadow-2xl transition-transform duration-300 ease-in-out z-50 ${
+            showChat ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          {showChat && (
+            <section style={{width: `{chatWidth}px`}} className="flex flex-col h-full relative p-5">
+              <div
+                className="w-1 cursor-col-resize bg-gray-300 hover:bg-gray-500"
+                onMouseDown={handleMouseDown}
+              ></div>
+              {/* Header / Dismiss Action */}
+              <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
+                <h2 className="text-lg font-bold text-white">
+                  Study <span className="text-cyan-400">Assistant</span>
+                </h2>
                 <button
-                  onClick={handleSubmit}
-                  disabled={loading || (!text.trim() && !file)}
-                  className="flex items-center justify-center gap-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition disabled:opacity-40 disabled:cursor-not-allowed h-full"
+                  onClick={() => setShowChat(false)}
+                  className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition"
                 >
-                  <Send className="w-3.5 h-3.5" /> Send
+                  <X className="w-5 h-5" />
                 </button>
               </div>
-            </div>
-          </section>
-        )}
+
+              {/* Main Message Window */}
+              <div className="flex-1 overflow-y-auto rounded-xl p-4 bg-slate-950 border border-slate-800 space-y-4 mb-4 custom-scrollbar">
+                {messages.length === 0 && (
+                  <p className="text-center text-sm text-slate-500 mt-8">
+                    Send a text message or load up notes to begin learning.
+                  </p>
+                )}
+
+                {messages.map((msg, i) => (
+                  <div
+                    key={i}
+                    className={`p-3 rounded-xl max-w-[85%] text-sm whitespace-pre-wrap break-words shadow-sm ${
+                      msg.role === "user"
+                        ? "bg-blue-900 text-white ml-auto rounded-tr-none"
+                        : "bg-slate-800 text-slate-100 mr-auto rounded-tl-none border border-slate-700"
+                    }`}
+                  >
+                    {msg.content}
+                  </div>
+                ))}
+
+                {loading && messages[messages.length - 1]?.content === "" && (
+                  <div className="p-3 rounded-xl max-w-[40%] bg-slate-800 border border-slate-700 text-slate-400 mr-auto rounded-tl-none animate-pulse flex items-center gap-1 text-sm">
+                    Thinking...
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
+              </div>
+
+              <div className="space-y-2">
+                <textarea
+                  value={text}
+                  onChange={(e) => setText(e.target.value)}
+                  placeholder="Type or paste your notes..."
+                  className="w-full bg-slate-950 border border-slate-800 text-slate-200 placeholder-slate-500 rounded-xl p-3 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition resize-none"
+                  rows="3"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !e.shiftKey) {
+                      e.preventDefault();
+                      handleSubmit();
+                    }
+                  }}
+                />
+
+                <div className="flex items-center gap-2">
+                  <input
+                    type="file"
+                    id="chat-file-upload"
+                    accept=".pdf,.txt,.doc,.docx,.ppt,.pptx"
+                    onChange={(e) => setFile(e.target.files[0])}
+                    className="hidden"
+                  />
+                  <label
+                    htmlFor="chat-file-upload"
+                    className={`flex-1 truncate text-center text-xs p-2.5 rounded-lg border border-dashed border-slate-700 cursor-pointer transition ${
+                      file
+                        ? "bg-cyan-950/40 text-cyan-400 border-cyan-500"
+                        : "bg-slate-950 text-slate-400 hover:text-slate-300 hover:border-slate-600"
+                    }`}
+                  >
+                    {file ? `📎 ${file.name}` : "Attach Document"}
+                  </label>
+
+                  <button
+                    onClick={handleSubmit}
+                    disabled={loading || (!text.trim() && !file)}
+                    className="flex items-center justify-center gap-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition disabled:opacity-40 disabled:cursor-not-allowed h-full"
+                  >
+                    <Send className="w-3.5 h-3.5" /> Send
+                  </button>
+                </div>
+              </div>
+            </section>
+          )}
+        </div>
       </div>
     </div>
   );
